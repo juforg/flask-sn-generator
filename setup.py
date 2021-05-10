@@ -33,12 +33,15 @@ setup(
     long_description=readme + '\n\n' + history,
     author="juforg",
     author_email='juforg@gmail.com',
-    url='https://github.com/juforg/flask_sn_generator',
+    url='https://github.com/juforg/flask-sn-generator',
     packages=[
         'flask_sn_generator',
     ],
-    package_dir={'flask_sn_generator':
-                 'flask_sn_generator'},
+    py_modules=[
+        'flask_sn_generator'
+    ],
+    # package_dir={'flask_sn_generator':
+    #              'flask_sn_generator'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",

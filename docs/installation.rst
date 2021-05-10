@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/juforg/flask_sn_generator
+    $ git clone git://github.com/juforg/flask-sn-generator
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/juforg/flask_sn_generator/tarball/master
+    $ curl  -OL https://github.com/juforg/flask-sn-generator/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/juforg/flask_sn_generator
-.. _tarball: https://github.com/juforg/flask_sn_generator/tarball/master
+.. _Github repo: https://github.com/juforg/flask-sn-generator
+.. _tarball: https://github.com/juforg/flask-sn-generator/tarball/master
