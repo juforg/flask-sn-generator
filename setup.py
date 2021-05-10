@@ -31,6 +31,7 @@ setup(
     version='0.1.0',
     description="generate global unique increased serial number",
     long_description=readme + '\n\n' + history,
+    long_description_content_type='text/x-rst',
     author="juforg",
     author_email='juforg@gmail.com',
     url='https://github.com/juforg/flask-sn-generator',
