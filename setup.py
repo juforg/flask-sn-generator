@@ -34,9 +34,9 @@ setup(
     author="juforg",
     author_email='juforg@gmail.com',
     url='https://github.com/juforg/flask-sn-generator',
-    packages=[
-        'flask_sn_generator',
-    ],
+    # packages=[
+    #     'flask_sn_generator',
+    # ],
     py_modules=[
         'flask_sn_generator'
     ],
