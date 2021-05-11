@@ -7,6 +7,8 @@
     :license: MIT, see LICENSE for more details.
 """
 
+from flask import current_app
+
 __version__ = '0.1.1'
 
 lua_script_content = """
@@ -43,7 +45,6 @@ class SnGenerator(object):
 
     def __init__(self, app=None, config_prefix="SN", redis_config_prefix="REDIS"):
         self.sn_seq_length = None
-        self.separator = ''
         self.config_prefix = config_prefix
         self.redis_config_prefix = redis_config_prefix
         self._sn_lua_script = None
@@ -63,11 +64,10 @@ class SnGenerator(object):
         self._sn_lua_script = self._redis_client.register_script(lua_script_content)
         app.config.setdefault(f'{self.config_prefix}_SEQ_LENGTH', 4)
         app.config.setdefault(f'{self.config_prefix}_SEPARATOR', '')
-        self.separator = app.config.get(f'{self.config_prefix}_SEPARATOR')
         self.sn_seq_length = int(app.config.get(f'{self.config_prefix}_SEQ_LENGTH')) % 10 or 4
         if not hasattr(app, "extensions"):
             app.extensions = {}
         app.extensions[self.config_prefix.lower()] = self
 
     def next_sn(self, tag, ymd):
-        return self._sn_lua_script(keys=[tag, ymd, self.separator, self.sn_seq_length]).decode('UTF-8')
+        return self._sn_lua_script(keys=[tag, ymd, current_app.config[f'{self.config_prefix}_SEPARATOR'], self.sn_seq_length]).decode('UTF-8')
