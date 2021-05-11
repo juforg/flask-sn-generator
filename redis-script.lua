@@ -9,9 +9,7 @@ local tag = KEYS[1];
 --local now = redis.call('TIME');
 local ymd = KEYS[2];
 local separator = KEYS[3];
-if separator == nil then
-    separator = '';
-end
+local seqLength = KEYS[4];
 
 local snKey = prefix .. tag .. ':' .. ymd;
 
@@ -20,4 +18,4 @@ redis.call('EXPIRE', snKey, 86400);
 
 
 -- second, microSecond,  seq
-return  tag .. separator .. ymd .. separator .. string.format("%04d", seq)
+return  tag .. separator .. ymd .. separator .. string.format("%0"..seqLength.."d", seq)
