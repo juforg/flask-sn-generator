@@ -9,7 +9,6 @@
 
 __version__ = '0.1.1'
 
-__all__ = []
 lua_script_content = """
 -- need redis 3.2+
 redis.replicate_commands();
