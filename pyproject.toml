@@ -1,6 +1,6 @@
 [project]
 name = "flask-sn-generator"
-version = "0.1.1"
+version = "0.1.2"
 description = "generate global unique increased serial number"
 readme = "README.rst"
 authors = ["juforg <juforg@gmail.com>"]

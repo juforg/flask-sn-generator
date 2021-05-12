@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='flask_sn_generator',
-    version='0.1.1',
+    version='0.1.2',
     description="generate global unique increased serial number",
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/x-rst',

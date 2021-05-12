@@ -9,7 +9,7 @@
 
 from flask import current_app
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 lua_script_content = """
 -- need redis 3.2+
@@ -49,8 +49,6 @@ class SnGenerator(object):
         self.redis_config_prefix = redis_config_prefix
         self._sn_lua_script = None
         self._redis_client = None
-        if app is not None:
-            self.init_app(app)
 
     def init_app(self, app):
         """Initalizes the application with the extension.
