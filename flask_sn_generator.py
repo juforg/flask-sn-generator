@@ -9,7 +9,7 @@
 
 from flask import current_app
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 lua_script_content = """
 -- need redis 3.2+
@@ -62,10 +62,12 @@ class SnGenerator(object):
         self._sn_lua_script = self._redis_client.register_script(lua_script_content)
         app.config.setdefault(f'{self.config_prefix}_SEQ_LENGTH', 4)
         app.config.setdefault(f'{self.config_prefix}_SEPARATOR', '')
-        self.sn_seq_length = int(app.config.get(f'{self.config_prefix}_SEQ_LENGTH')) % 10 or 4
+        self.sn_seq_length = app.config.get(f'{self.config_prefix}_SEQ_LENGTH') or 4
+        self.sn_seq_length = int(self.sn_seq_length) % 10
         if not hasattr(app, "extensions"):
             app.extensions = {}
         app.extensions[self.config_prefix.lower()] = self
 
     def next_sn(self, tag, ymd):
-        return self._sn_lua_script(keys=[tag, ymd, current_app.config[f'{self.config_prefix}_SEPARATOR'], self.sn_seq_length]).decode('UTF-8')
+        sn = self._sn_lua_script(keys=[tag or '', ymd, current_app.config[f'{self.config_prefix}_SEPARATOR'], self.sn_seq_length]).decode('UTF-8')
+        return sn
